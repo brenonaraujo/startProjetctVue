@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <pageLoader/>
     <RootHeader></RootHeader>
     <div class="container">
       <router-view></router-view>

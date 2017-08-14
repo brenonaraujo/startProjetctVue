@@ -16,6 +16,8 @@
 
 <script>
 import { isEmpty } from 'lodash'
+import { mapActions } from 'vuex'
+
 export default {
   data () {
     return {
@@ -26,10 +28,16 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['attemptLogin']),
     doLogin () {
+      this.$loader.show()
       //  this.$router.push('/')
       const user = this.user
-      this.$store.dispatch('attemptLogin', {...user})
+      this.attemptLogin({...user})
+      .then(() => {
+        this.$router.push('/') // push para ir para a rota
+      })
+      this.$loader.hide()
     }
   },
   computed: {
