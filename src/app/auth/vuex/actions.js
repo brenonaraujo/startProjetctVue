@@ -1,3 +1,10 @@
+import http from 'src/http'
+
 export const attemptLogin = (context, payload) => {
-  context.commit('setToken', 'xxx')
+  // context.commit('setToken', 'xxx')
+  return http.get('https://uinames.com/api/?ext')
+  .then(response => response.data)
+  .then(data => {
+    console.log(data)
+  })
 }
